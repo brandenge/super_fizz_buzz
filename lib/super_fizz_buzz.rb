@@ -1,8 +1,12 @@
-super_fizz = { 'Super' => 7, 'Fizz' => 3, 'Buzz' => 5 }
-(1..1000).each do |num|
-  result = ''
-  super_fizz.each do |key, value|
-    result += key if (num % value).zero?
+class SuperFizzBuzz
+  def output(n)
+    result = ''
+    super_fizz = { 'Super' => 7, 'Fizz' => 3, 'Buzz' => 5 }
+    super_fizz.each { |k, v| result += k if (n % v).zero? }
+    result.empty? ? n : result
   end
-  puts result.empty? ? num : result
+
+  def output_range(first, last)
+    (first..last).map{ |n| output(n) }
+  end
 end
